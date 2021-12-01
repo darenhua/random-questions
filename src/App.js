@@ -10,10 +10,10 @@ function App() {
   useEffect(() => {
     fetch(questionsFile)
       .then((response) => response.text())
-      .then((data) => setText(data.split("\r\n")));
+      .then((data) => setText(data.split("?")));
   }, []);
   const getRandomQuestion = () => {
-    console.log(Math.round(Math.random() * text.length - 1));
+    console.log(Math.round(Math.random() * (text.length - 1)));
     setRandomQuestion(text[Math.round(Math.random() * text.length - 1)]);
   };
   return (
