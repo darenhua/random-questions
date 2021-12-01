@@ -18,7 +18,7 @@ function App() {
   };
   return (
     <div className="App">
-      <Label text={question} />
+      <Label text={question + "?"} />
       <div className="container">
         <Button onClick={getRandomQuestion} />
         <Button className="right" onClick={getRandomQuestion} />
