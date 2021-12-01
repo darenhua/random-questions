@@ -10,12 +10,11 @@ function App() {
   useEffect(() => {
     fetch(questionsFile)
       .then((response) => response.text())
-      // 4. Setting *dogImage* to the image url that we received from the response above
       .then((data) => setText(data.split("\r\n")));
   }, []);
   const getRandomQuestion = () => {
+    console.log(Math.round(Math.random() * text.length - 1));
     setRandomQuestion(text[Math.round(Math.random() * text.length - 1)]);
-    console.log(question);
   };
   return (
     <div className="App">
