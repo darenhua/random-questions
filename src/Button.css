@@ -1,0 +1,14 @@
+.Button {
+  background-color: white;
+  width: 30%;
+  height: 50%;
+  margin: 20px;
+}
+
+.Button .right {
+  background-color: black;
+}
+
+.Button:active {
+  background-color: red;
+}

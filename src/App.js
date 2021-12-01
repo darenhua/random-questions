@@ -1,23 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Label from "./Label.js";
+import Button from "./Button.js";
+import { useState, useEffect } from "react";
+import questionsFile from "./questions.txt";
 
 function App() {
+  const [text, setText] = useState(null);
+  const [question, setRandomQuestion] = useState("Good Morning");
+  useEffect(() => {
+    fetch(questionsFile)
+      .then((response) => response.text())
+      // 4. Setting *dogImage* to the image url that we received from the response above
+      .then((data) => setText(data.split("\r\n")));
+  }, []);
+  const getRandomQuestion = () => {
+    setRandomQuestion(text[Math.round(Math.random() * text.length - 1)]);
+    console.log(question);
+  };
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Label text={question} />
+      <div className="container">
+        <Button onClick={getRandomQuestion} />
+        <Button className="right" onClick={getRandomQuestion} />
+      </div>
     </div>
   );
 }
